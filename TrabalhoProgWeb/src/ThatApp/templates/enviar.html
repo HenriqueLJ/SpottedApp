@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+
+<div class="centered row" style='padding-top: 5%; padding-left : 5%'; >
+
+  <p class="center-align">Envie seu Spotted! </p>
+
+    <div class="input-field col s12 m6 offset-m3 container">
+
+      <div class="center-align">
+
+        <form action="/enviar/" method="post" class="row">
+
+          {% csrf_token %}
+          <div class="row">
+
+            <div class="row">
+
+              <div class="input-field col s12 m6 l8">
+                <i class="material-icons prefix">title</i>
+                <textarea id="titulo" name="titulo" class="materialize-textarea" data-length="50" required="" aria-required="true"></textarea>
+                <label for="titulo">Titulo</label>
+              </div>
+
+              <div class="input-field col s12 m6 l4">
+                <i class="material-icons prefix">whatshot</i>
+                <textarea id="categoria" name="categoria" class="materialize-textarea" data-length="15" required="" aria-required="true"></textarea>
+                <label for="categoria">Categoria</label>
+              </div>
+
+              <div class="input-field col s12">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="mensagem" name="mensagem" class="materialize-textarea" data-length="280" required="" aria-required="true"></textarea>
+                <label for="mensagem">Mensagem</label>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="container">
+
+            <button class="btn center waves-effect waves-light" style:'background-color = #124899;' type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+
+          </div>
+
+        </form> 
+
+      </div>
+
+    </div>  
+
+</div>
+
+
+
+
+<script>
+  //aumenta area de texto
+  $('textarea#mensagem').val('');
+    M.textareaAutoResize($('textarea#mensagem'));
+</script>
+<script>
+  //contador de caracteres
+  $(document).ready(function() {
+    $('input#input_text, textarea#titulo, textarea#categoria,textarea#mensagem').characterCounter();
+  });  
+</script>
+
+
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('form').submit( function () {
+			var formdata = $(this).serialize();
+			$.ajax({
+			    type: "POST",
+			    url: "",
+			    data: formdata,
+                success: function(response) {
+                    $('textarea#titulo').val('')
+                    $('textarea#categoria').val('')
+                    $('textarea#mensagem').val('')
+                    M.toast({html: 'Spotted Enviado'})
+                }
+			 });
+			return false;
+		});
+	});
+</script>
+{% endblock %}
+        

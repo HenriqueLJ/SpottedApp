@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="centered row" style='padding-top: 5%;'>
+    {% for spotteds_list in spotteds_list %}  
+        <div class="col s12 l4" id="{{ spotteds_list.id }}">
+            <h5 class="header">{{ spotteds_list.titulo }}</h5>
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="https://lorempixel.com/100/190/nature/6">
+                </div>
+                <div class="card-stacked">
+                    <div class="col s1 grey-text">
+                        #{{ spotteds_list.id }}
+                    </div>
+                    <div class="card-content">
+                         <p>{{ spotteds_list.texto }}</p>
+                    </div>
+                        <a href="#"><span class="new badge" data-badge-caption="">{{ spotteds_list.categoria }}</span></a>
+                    <form class="card-action" action="/admin/spotteds/" method="post" class="row">
+                        {% csrf_token %}
+                        <input type="hidden" name="id_spotted" value="{{spotteds_list.id}}">
+                        <input type="hidden" name="veredito" id="veredito" value="0"/>
+                        <button onclick="getElementById('veredito').value = 1" class="btn-floating btn-medium waves-effect waves-light right" type="submit" style="background-color:#4CAF50;">
+                            <i class="material-icons">thumb_up</i>
+                        </button>
+                        <button onclick="getElementById('veredito').value = 0" class="btn-floating btn-medium waves-effect waves-light left"  type="submit" style="background-color:#F44336;">
+                            <i class="material-icons">thumb_down</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>        
+    {% endfor %}  
+</div>
+
+{% if spotteds_list.has_other_pages %}
+        <ul class="pagination">
+            {% if spotteds_list.has_previous %}
+            <li><a href="?page={{ spotteds_list.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+            {% else %}
+            <li class="disabled"><i class="material-icons">chevron_left</i></li>
+            {% endif %}
+            {% for i in spotteds_list.paginator.page_range %}
+                {% if spotteds_list.number == i %}
+                    <li class="active"><a href="#!">{{ i }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if spotteds_list.has_next %}
+                <li><a href="?page={{ spotteds_list.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                {% else %}
+                <li class="disabled"><i class="material-icons">chevron_right</i></li>
+                {% endif %}
+        </ul>
+    {% endif %}
+
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('form').submit( function () {
+			var formdata = $(this).serialize();
+			$.ajax({
+			    type: "POST",
+			    url: "",
+			    data: formdata,
+                success: function(response) {
+                    console.log(formdata);
+                    var div = document.getElementById(response);
+                    div.remove();
+                    M.toast({html: 'Spotted Avaliado'})
+                }
+			 });
+			return false;
+		});
+	});
+</script>
+{% endblock %}
+        

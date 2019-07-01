@@ -1,0 +1,58 @@
+{% block navbar %}
+
+{% load static %}
+
+<nav class="f57373">
+    <!---Barra de navegação-->
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">ThatApp</a>
+
+        <ul id="nav-mobile" class="right hide-on-small-and-down">
+            <li>
+                <a href="ideias.html">Ideias</a>
+            </li>
+            <li>
+                <a href="perguntas">Perguntas</a>
+            </li>
+            <li>
+                <a href="Estatisticas">Estatisticas</a>
+            </li>
+        </ul>
+
+        <ul id="nav-mobile" class="left hide-on-small-and-down">
+            <a href="#user"><img class="brand-logo left" src="{% static "images/logo-ta.png" %}" style="height: 100%;"></a>
+        </ul>
+
+        <div class="hide-on-med-and-up">
+
+            <ul id="slide-out" class="sidenav">
+            
+                <li>
+                    <div class="user-view"><!--inserir dados do usuario-->
+                        <a href="#user"><img class="circle" src="{% static "images/logo-ta.png" %}"></a>
+                        <a href="#name"><span class="black-text name">Usuario</span></a>
+                        <a href="#email"><span class="black-text email">Codigo Identificador</span></a>
+                    </div>
+                </li>
+
+                <li><a href="#!"><i class="material-icons">donut_large</i>Estatisticas</a></li>
+                <li><a href="#!"><i class="material-icons">done_outline</i>Perguntas</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+
+                <li><a class="subheader">Outros</a></li>
+                <li><a class="waves-effect" href="ideias.html">Envie Ideias!</a></li>
+                <li><a class="waves-effect" href="#!">Contato</a></li>
+                <li><a class="waves-effect" href="#!">Privacidade</a></li>
+
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+{% endblock %}

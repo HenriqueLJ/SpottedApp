@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="centered row" style='padding-top: 5%; padding-left : 5%'; >
+
+  <p class="center-align">Seja bem vindo, precisaremos de algumas informações basicas</p>
+
+    <div class="input-field col s12 m6 offset-m3 container">
+
+      <div class="center-align">
+
+        <form action="/signin/" method="post" class="row">
+
+          {% csrf_token %}
+          <div class="row">
+
+            <div class="row">
+
+              <div class="input-field col s12 m6 l6">
+                <i class="material-icons prefix">face</i>
+                <textarea id="nome" name="nome" class="materialize-textarea" data-length="20" required="" aria-required="true"></textarea>
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s12 m6 l6">
+                <textarea id="sobrenome" name="sobrenome" class="materialize-textarea" data-length="30" required="" aria-required="true"></textarea>
+                <label for="sobrenome">Sobrenome</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">assignment_ind</i>
+                <textarea id="usuario" name="usuario" class="materialize-textarea" data-length="15" required="" aria-required="true"></textarea>
+                <label for="usuario">Nome de usuario</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">email</i>
+                <textarea id="email" name="email" class="materialize-textarea" data-length="64" required="" aria-required="true"></textarea>
+                <label for="email">Email</label>
+              </div>
+
+              <div class="input-field col s6">
+                <i class="material-icons prefix">lock</i>
+                <input id="password" name="password" type="password" class="materialize-textarea" data-length="64" required="" aria-required="true">
+                <label for="password">Senha</label>
+              </div>
+              <div class="input-field col s6">
+                <p>
+                    <label>
+                        <input type="checkbox" required="" aria-required="true" />
+                        <span>Li e concordo com os </span>
+                        <a href="/termos">Termos de Compromisso</a>
+                    </label>
+                </p>
+              </div>  
+
+            </div>
+
+          </div>
+
+          <div class="container">
+
+            <button class="btn center waves-effect waves-light" style:'background-color = #124899;' type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+
+          </div>
+
+        </form> 
+
+      </div>
+
+    </div>  
+
+</div>
+
+{% endblock %}
+        

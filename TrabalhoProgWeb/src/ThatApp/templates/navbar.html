@@ -1,0 +1,85 @@
+{% block navbar %}
+
+{% load static %}
+
+<nav style='background-color: #07357d;'> <!---Barra de navegação-->
+
+    <div class="nav-wrapper">
+
+        <a href="/spotteds" class="brand-logo center">SpottedApp</a>
+
+        <ul id="nav-mobile" class="right hide-on-small-and-down">
+        
+            <li>
+                <a href="/enviar"><i class="material-icons left">record_voice_over</i>Enviar Spotted</a>
+            </li>
+            <li>
+                <a href="/spotteds"><i class="material-icons left">message</i>Ler Spotteds</a>
+            </li>
+
+            {% if request.user.is_authenticated and request.user.is_superuser %}
+            <li>
+                <a href="/admin/spotteds"><i class="material-icons left">check</i>Avaliar Spotteds</a>
+            </li>            
+            {% endif %}
+        </ul>
+
+        <div style='background-color: #e8effa'>
+
+            <ul id="slide-out" class="sidenav sidenav-fixed" style='background-color: #e8effa'>
+                {% if request.user.is_authenticated%}
+                <li>
+                    <div class="user-view" style='background-color: #e8effa'>
+                        <!--<a href="#user"><img class="circle" src="{% static "images/logo-ta.png" %}"></a>-->
+                        <h4 style='color: #07357d;'>SpottedApp</h4>
+                        <h5 class="black-text">{{ request.user.username }}</h4>
+                        <h6 class="black-text">#{{ request.user.id }}</h6>
+                    </div>
+                </li>
+                <!--
+                <li>
+                    <div class="divider"></div>
+                </li>
+
+                <li><a href="#!"><i class="material-icons">record_voice_over</i>Seus Curtirs</a></li>
+                <li><a href="#!"><i class="material-icons">speaker_notes</i>Seus Comentarios</a></li>
+                -->
+
+                {% else %}
+                    <li>
+                        <div class="user-view" style='background-color: #e8effa'>
+                            <a href="/login"><span class="black-text name">Login</span></a>
+                            <a href="/signin"><span class="black-text email">Cadastrar</span></a>
+                        </div>
+                    </li>
+
+                {% endif %}
+                
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+
+                <li><a class="subheader">Outros</a></li>
+                <!--<li><a class="waves-effect" href="ideias.html">Envie Ideias!</a></li>-->
+                <li><a class="waves-effect" href="#!">Contato</a></li>
+                <li><a class="waves-effect" href="#!">Privacidade</a></li>
+                {% if request.user.is_authenticated%}
+                <li><a class="waves-effect" href="/logout">Deslogar</a></li>
+                {% endif %}
+
+                <li>
+                    <div class="divider"></div>
+                    <a class="subheader">anuncios</a></li>
+                </li>
+
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+{% endblock %}

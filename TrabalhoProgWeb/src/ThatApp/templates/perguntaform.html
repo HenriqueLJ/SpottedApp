@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<div class="centered row" style='padding-top: 5%;'>
+
+  <p class="center-align">Envie ideias que gostaria de ver nos nossos questionarios!</p>
+
+    <div class="input-field col s12 m6 offset-m3 container">
+
+      <div class="center-align">
+
+          <form action="/ideiaform/" method="post" class="row">
+          {% csrf_token %}
+            <input type="text" name="titulo" placeholder="Titulo" class="input-field col s4 offset-s2">
+            <input type="text" name="categoria" placeholder="Categoria" class="input-field col s3 offset-s1">
+            <input type="text" name="texto" placeholder ="Pergunta" class="materialize-textarea col s8 offset-s2">
+            <br>
+            <button class="btn right waves-effect waves-light red lighten-2" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+            </button>
+          </form> 
+
+      </div>
+
+    </div>  
+
+</div>
+{% endblock %}
+        

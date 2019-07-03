@@ -73,3 +73,9 @@ def deslogarUsuario(request):
             return render(request,'login.html')
         else:  
             return render(request,'login.html')
+
+def contatos(request):
+    return render(request,'Contatos.html')
+    
+def privacidade(request):
+    return render(request,'Privacidade.html')

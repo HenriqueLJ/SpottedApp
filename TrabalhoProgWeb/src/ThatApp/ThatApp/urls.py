@@ -30,4 +30,8 @@ urlpatterns = [
     path('signin/',criarUsuario),
     path('login/',logarUsuario),
     path('logout/',deslogarUsuario),
+    path('',listarSpotteds),
+    path('contatos/',contatos),
+    path('privacidade/',privacidade),
+
 ]

@@ -6,7 +6,7 @@
 
     <div class="nav-wrapper">
 
-        <a href="/spotteds" class="brand-logo center">SpottedApp</a>
+        <a href="/spotteds" class="brand-logo left offset-s1">SpottedApp</a>
 
         <ul id="nav-mobile" class="right hide-on-small-and-down">
         
@@ -61,9 +61,8 @@
                 </li>
 
                 <li><a class="subheader">Outros</a></li>
-                <!--<li><a class="waves-effect" href="ideias.html">Envie Ideias!</a></li>-->
-                <li><a class="waves-effect" href="#!">Contato</a></li>
-                <li><a class="waves-effect" href="#!">Privacidade</a></li>
+                <li><a class="waves-effect" href="/contatos">Contato</a></li>
+                <li><a class="waves-effect" href="/privacidade">Privacidade</a></li>
                 {% if request.user.is_authenticated%}
                 <li><a class="waves-effect" href="/logout">Deslogar</a></li>
                 {% endif %}

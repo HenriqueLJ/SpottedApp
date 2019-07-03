@@ -1,0 +1,6 @@
+git init
+git add TrabalhoProgWeb
+git commit -m "Your message about the commit"
+git remote add origin https://github.com/HenriqueLJ/SpottedApp.git
+git push -u origin master
+git push origin master 
